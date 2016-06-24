@@ -11,7 +11,7 @@
 
 <#NewsEvent>
 rml:logicalSource [
-     rml:source "/home/efi/SNAP/files/events.json";
+     rml:source "/resources/events.json";
      rml:referenceFormulation ql:JSONPath;
      rml:iterator "$"];
 

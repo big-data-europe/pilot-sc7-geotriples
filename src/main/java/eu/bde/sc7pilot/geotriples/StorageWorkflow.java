@@ -46,7 +46,8 @@ public class StorageWorkflow {
 		store(mappingFileName,rdfFileName,jsonFileName);
 	}
 	private void store(String mappingFileName,String rdfFileName,String jsonFileName) throws Exception{
-		
+		new File(outputDirectory,jsonFileName).delete();
+		new File(outputDirectory,rdfFileName).delete();
 	}
 	
 }
