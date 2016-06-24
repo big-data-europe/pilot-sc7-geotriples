@@ -30,6 +30,7 @@ public class GeotriplesService {
 	public void saveEvent(@Suspended final AsyncResponse asyncResponse, Event event) {
 		new Thread(new Runnable() {
 			@Override
+			
 			public void run() {
 				ResponseMessage respMessage = new ResponseMessage();
 				if (event == null) {
