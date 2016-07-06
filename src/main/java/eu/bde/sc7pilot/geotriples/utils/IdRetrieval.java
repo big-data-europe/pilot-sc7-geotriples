@@ -18,7 +18,7 @@ public class IdRetrieval {
 	}
 
 	public synchronized static long getId(boolean change) throws Exception {
-		String filePath =  "/home/efi/SNAP/files/id.txt";
+		String filePath =  "/resources/id.txt";
 		long id = 0;
 		BufferedReader file = null;
 		try {
