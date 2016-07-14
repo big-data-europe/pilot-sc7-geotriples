@@ -14,7 +14,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<build>
-		
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -23,7 +23,7 @@
 					<warName>geotriples</warName>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					
+
 				</configuration>
 
 			</plugin>
@@ -44,6 +44,11 @@
 	</build>
 	<repositories>
 		<repository>
+			<id>strabon</id>
+			<name>Strabon - maven repository</name>
+			<url>http://maven.strabon.di.uoa.gr/content/repositories/releases</url>
+		</repository>
+		<repository>
 			<id>GeoTriples-mvn-repo</id>
 			<url>https://raw.github.com/LinkedEOData/GeoTriples/mvn-repo-snapshots/</url>
 			<snapshots>
@@ -53,7 +58,13 @@
 		</repository>
 	</repositories>
 	<dependencies>
-	<dependency>
+		<dependency>
+			<groupId>eu.earthobservatory</groupId>
+			<artifactId>strabon-runtime</artifactId>
+			<version>3.3.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>
 			<version>1.3</version>
