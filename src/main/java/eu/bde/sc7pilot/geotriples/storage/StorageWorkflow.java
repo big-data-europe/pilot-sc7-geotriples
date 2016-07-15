@@ -14,7 +14,9 @@ import eu.bde.sc7pilot.geotriples.model.Event;
 
 public class StorageWorkflow {
 	private String outputDirectory="/resources/";
+	//private String outputDirectory="/home/efi/SNAP/files/";
 	private String output="/resources/";
+	//private String output="/home/efi/SNAP/files/";
 	private String STRABON_HOST="10.0.10.13";
 	private int STRABON_PORT=5432;
 	private String DB_NAME="endpoint";
@@ -55,8 +57,8 @@ public class StorageWorkflow {
 		GeotriplesConverter.tempGeotriples(outputDirectory+mappingFileName, outputDirectory+rdfFileName, outputDirectory+jsonFileName);
 		RdfStorage rdfStorage=new StrabonRdfStorage(DB_NAME, USERNAME, PASSWORD, STRABON_PORT, STRABON_HOST);
 		rdfStorage.storeRdf(output+rdfFileName);
-		new File(outputDirectory,jsonFileName).delete();
-		new File(outputDirectory,rdfFileName).delete();
+		//new File(outputDirectory,jsonFileName).delete();
+		//new File(outputDirectory,rdfFileName).delete();
 	}
 	
 }

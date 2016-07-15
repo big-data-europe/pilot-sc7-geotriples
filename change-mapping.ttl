@@ -51,7 +51,7 @@ rr:predicateObjectMap [
 
 <#Area>
     rml:logicalSource [
-     rml:source "/home/efi/SNAP/files/changes.json";
+     rml:source "/resources/changes.json";
      rml:referenceFormulation ql:JSONPath;
      rml:iterator "$.area"];
 

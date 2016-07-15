@@ -65,7 +65,7 @@ public class GeotriplesService {
 						a.setId(IdRetrieval.getId(false));
 					}
 					storageWorkflow.storeEvent(event);
-					respMessage.setMessage("event processed successfully");
+					respMessage.setMessage("event processed");
 					respMessage.setCode(200);
 				} catch (Exception e) {
 					e.printStackTrace();

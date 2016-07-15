@@ -78,7 +78,7 @@ rr:predicateObjectMap [
        rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{id}"]].
 <#Geometry>
     rml:logicalSource [
-     rml:source "/home/efi/SNAP/files/events.json";
+     rml:source "/resources/events.json";
      rml:referenceFormulation ql:JSONPath;
      rml:iterator "$.areas"];
 

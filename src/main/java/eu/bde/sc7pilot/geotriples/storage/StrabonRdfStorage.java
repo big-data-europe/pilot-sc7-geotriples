@@ -30,18 +30,14 @@ public class StrabonRdfStorage implements RdfStorage{
 			}
 		});
 		try {
-			try {
-				strabon = new Strabon(db, username, password, port, host, true);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			strabon = new Strabon(db, username, password, port, host, true);
 			strabon.storeInRepo(rdfPath, "NTRIPLES", false);
 			// String[]
 			// argrs={"localhost","5432","endpoint","postgres","postgres",rdfPath,"-f","
 			// NTRIPLES"};
 			// StoreOp.main(argrs);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw e;
 		} finally {
 			if (strabon != null) {
