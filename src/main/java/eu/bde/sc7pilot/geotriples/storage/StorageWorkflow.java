@@ -14,9 +14,10 @@ import eu.bde.sc7pilot.geotriples.model.Event;
 
 public class StorageWorkflow {
 	private String outputDirectory="/resources/";
-	private String STRABON_HOST="localhost";
+	private String output="/resources/";
+	private String STRABON_HOST="10.0.10.13";
 	private int STRABON_PORT=5432;
-	private String DB_NAME="events-changes";
+	private String DB_NAME="endpoint";
 	private String PASSWORD="postgres";
 	private String USERNAME="postgres";
 	public synchronized void  storeChanges(List<Change> changes) throws Exception {
@@ -49,7 +50,7 @@ public class StorageWorkflow {
 	private void store(String mappingFileName,String rdfFileName,String jsonFileName) throws Exception{
 		GeotriplesConverter.tempGeotriples(outputDirectory+mappingFileName, outputDirectory+rdfFileName, outputDirectory+jsonFileName);
 		RdfStorage rdfStorage=new StrabonRdfStorage(DB_NAME, USERNAME, PASSWORD, STRABON_PORT, STRABON_HOST);
-		rdfStorage.storeRdf(outputDirectory+rdfFileName);
+		rdfStorage.storeRdf(output+rdfFileName);
 		new File(outputDirectory,jsonFileName).delete();
 		new File(outputDirectory,rdfFileName).delete();
 	}
