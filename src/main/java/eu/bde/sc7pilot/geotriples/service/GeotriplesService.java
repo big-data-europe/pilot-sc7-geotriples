@@ -36,27 +36,27 @@ public class GeotriplesService {
 				if (event == null) {
 					respMessage.setMessage("request body should not be empty.");
 					respMessage.setCode(400);
-					throw new WebApplicationException(
-							Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
+					//throw new WebApplicationException(
+					//		Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 				}
 				if (event.getId() == null || event.getId().trim().isEmpty()) {
 					respMessage.setMessage("event id should not be null or empty.");
 					respMessage.setCode(400);
-					throw new WebApplicationException(
-							Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
+					//throw new WebApplicationException(
+						//	Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 				}
 				for (Area area : event.getAreas()) {
 					if (area == null) {
 						respMessage.setMessage("all areas should have a name and a geometry");
 						respMessage.setCode(400);
-						throw new WebApplicationException(
-								Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
+					//	throw new WebApplicationException(
+							//	Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 					}
 					if ((area.getName().trim().isEmpty()) || (area.getName() == null) || area.getGeometry() == null) {
 						respMessage.setMessage("all areas should have a name and a geometry");
 						respMessage.setCode(400);
-						throw new WebApplicationException(
-								Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
+					//	throw new WebApplicationException(
+							//	Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 					}
 				}
 				StorageWorkflow storageWorkflow = new StorageWorkflow();
@@ -69,8 +69,10 @@ public class GeotriplesService {
 					respMessage.setCode(200);
 				} catch (Exception e) {
 					e.printStackTrace();
-					respMessage.setMessage("internal server error");
+					respMessage.setMessage(e.getMessage());
 					respMessage.setCode(500);
+					//throw new WebApplicationException(
+							//Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 				}
 				asyncResponse.resume(Response.status(respMessage.getCode()).entity(respMessage).build());
 			}

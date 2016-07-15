@@ -45,7 +45,11 @@ public class StorageWorkflow {
 		} catch (IOException e) {
 			throw e;
 		}
-		store(mappingFileName,rdfFileName,jsonFileName);
+		try {
+			store(mappingFileName,rdfFileName,jsonFileName);
+		} catch (IOException e) {
+			throw e;
+		}
 	}
 	private void store(String mappingFileName,String rdfFileName,String jsonFileName) throws Exception{
 		GeotriplesConverter.tempGeotriples(outputDirectory+mappingFileName, outputDirectory+rdfFileName, outputDirectory+jsonFileName);
