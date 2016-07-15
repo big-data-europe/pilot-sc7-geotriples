@@ -13,10 +13,10 @@ import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import eu.bde.sc7pilot.geotriples.StorageWorkflow;
 import eu.bde.sc7pilot.geotriples.model.Area;
 import eu.bde.sc7pilot.geotriples.model.Change;
 import eu.bde.sc7pilot.geotriples.model.Event;
+import eu.bde.sc7pilot.geotriples.storage.StorageWorkflow;
 import eu.bde.sc7pilot.geotriples.utils.IdRetrieval;
 import eu.bde.sc7pilot.geotriples.webconfig.ResponseMessage;
 
