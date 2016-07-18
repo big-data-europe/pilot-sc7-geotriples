@@ -20,7 +20,7 @@ public class StorageWorkflow {
 	private String STRABON_HOST = "10.0.10.13";
 	// private String STRABON_HOST = "localhost";
 	private int STRABON_PORT = 5432;
-	private String DB_NAME = "events-changes";
+	private String DB_NAME = "endpoint";
 	private String PASSWORD = "postgres";
 	private String USERNAME = "postgres";
 
