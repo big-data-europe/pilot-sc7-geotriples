@@ -13,52 +13,64 @@ import eu.bde.sc7pilot.geotriples.model.Change;
 import eu.bde.sc7pilot.geotriples.model.Event;
 
 public class StorageWorkflow {
-	private String outputDirectory="/resources/";
-	//private String outputDirectory="/home/efi/SNAP/files/";
-	private String output="/resources/";
-	//private String output="/home/efi/SNAP/files/";
-	private String STRABON_HOST="10.0.10.13";
-	private int STRABON_PORT=5432;
-	private String DB_NAME="endpoint";
-	private String PASSWORD="postgres";
-	private String USERNAME="postgres";
-	public synchronized void  storeChanges(List<Change> changes) throws Exception {
-		ObjectMapper objectMapper=new ObjectMapper().registerModule(new JtsModule()).registerModule(new JodaModule());
-		String mappingFileName="change-mapping.ttl";
-		String jsonFileName="changes.json";
-		String rdfFileName="changes.nt";
-		
+	private String outputDirectory = "/resources/";
+	 //private String outputDirectory="/home/efi/SNAP/files/";
+	private String output = "/resources/";
+	 //private String output="/home/efi/SNAP/files/";
+	private String STRABON_HOST = "10.0.10.13";
+	// private String STRABON_HOST = "localhost";
+	private int STRABON_PORT = 5432;
+	private String DB_NAME = "events-changes";
+	private String PASSWORD = "postgres";
+	private String USERNAME = "postgres";
+
+	public synchronized void storeChanges(List<Change> changes) throws Exception {
 		try {
-			objectMapper.writer().writeValue(new File(outputDirectory,jsonFileName), changes);
-		} catch (IOException e) {
-			throw e;
-		}
-		store(mappingFileName,rdfFileName,jsonFileName);
-	}
-	
-	public synchronized void storeEvent(Event event) throws Exception{
-		ObjectMapper objectMapper=new ObjectMapper().registerModule(new JtsModule()).registerModule(new JodaModule());
-		String mappingFileName="event-mapping.ttl";
-		String jsonFileName="events.json";
-		String rdfFileName="events.nt";
-		
-		try {
-			objectMapper.writer().writeValue(new File(outputDirectory,jsonFileName), event);
-		} catch (IOException e) {
-			throw e;
-		}
-		try {
-			store(mappingFileName,rdfFileName,jsonFileName);
-		} catch (IOException e) {
+			ObjectMapper objectMapper = new ObjectMapper().registerModule(new JtsModule())
+					.registerModule(new JodaModule());
+			String mappingFileName = "change-mapping.ttl";
+			String jsonFileName = "changes.json";
+			String rdfFileName = "changes.nt";
+
+			objectMapper.writer().writeValue(new File(outputDirectory, jsonFileName), changes);
+
+			store(mappingFileName, rdfFileName, jsonFileName);
+		} catch (Exception e) {
 			throw e;
 		}
 	}
-	private void store(String mappingFileName,String rdfFileName,String jsonFileName) throws Exception{
-		GeotriplesConverter.tempGeotriples(outputDirectory+mappingFileName, outputDirectory+rdfFileName, outputDirectory+jsonFileName);
-		RdfStorage rdfStorage=new StrabonRdfStorage(DB_NAME, USERNAME, PASSWORD, STRABON_PORT, STRABON_HOST);
-		rdfStorage.storeRdf(output+rdfFileName);
-		//new File(outputDirectory,jsonFileName).delete();
-		//new File(outputDirectory,rdfFileName).delete();
+
+	public synchronized void storeEvent(Event event) throws Exception {
+		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JtsModule()).registerModule(new JodaModule());
+		String mappingFileName = "event-mapping.ttl";
+		String jsonFileName = "events.json";
+		String rdfFileName = "events.nt";
+
+		try {
+			objectMapper.writer().writeValue(new File(outputDirectory, jsonFileName), event);
+		} catch (Exception e) {
+			throw e;
+		}
+		try {
+			store(mappingFileName, rdfFileName, jsonFileName);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
-	
+
+	private void store(String mappingFileName, String rdfFileName, String jsonFileName) throws Exception {
+		try {
+			new GeotriplesConverter().convertToRDF(outputDirectory + mappingFileName, outputDirectory + rdfFileName, outputDirectory + jsonFileName);
+//		GeotriplesConverter.tempGeotriples(outputDirectory + mappingFileName, outputDirectory + rdfFileName,
+//				outputDirectory + jsonFileName);
+		RdfStorage rdfStorage = new StrabonRdfStorage(DB_NAME, USERNAME, PASSWORD, STRABON_PORT, STRABON_HOST);
+		rdfStorage.storeRdf(output + rdfFileName);
+		} catch (Exception e) {
+			e.printStackTrace();;
+			throw e;
+		}
+		// new File(outputDirectory,jsonFileName).delete();
+		// new File(outputDirectory,rdfFileName).delete();
+	}
+
 }

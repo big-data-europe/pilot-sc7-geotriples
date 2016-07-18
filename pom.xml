@@ -48,6 +48,11 @@
 			<name>Strabon - maven repository</name>
 			<url>http://maven.strabon.di.uoa.gr/content/repositories/releases</url>
 		</repository>
+		 <repository>
+          <id>maven2-repository.dev.java.net</id>
+          <name>Java.net repository</name>
+          <url>http://download.java.net/maven/2</url>
+      </repository>
 		<repository>
 			<id>GeoTriples-mvn-repo</id>
 			<url>https://raw.github.com/LinkedEOData/GeoTriples/mvn-repo-snapshots/</url>
@@ -56,6 +61,19 @@
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>osgeo</id>
+			<name>Open Source Geospatial Foundation Repository</name>
+			<url>http://download.osgeo.org/webdav/geotools/</url>
+		</repository>
+		 <repository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>boundless</id>
+          <name>Boundless Maven Repository</name>
+          <url>http://repo.boundlessgeo.com/main</url>
+        </repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -63,6 +81,32 @@
 			<artifactId>strabon-runtime</artifactId>
 			<version>3.3.1</version>
 			<scope>compile</scope>
+			<exclusions>
+			<exclusion>
+				<artifactId>jts</artifactId>
+				<groupId>com.vividsolutions</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>gt-geojson</artifactId>
+				<groupId>org.geotools</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>gt-xsd-kml</artifactId>
+				<groupId>org.geotools.xsd</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>gt-xml</artifactId>
+				<groupId>org.geotools</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>gt-jts-wrapper</artifactId>
+				<groupId>org.geotools</groupId>
+			</exclusion>
+			<exclusion>
+				<artifactId>ogc-tools-gml-jts</artifactId>
+				<groupId>org.jvnet.ogc</groupId>
+			</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -105,21 +149,22 @@
 			<artifactId>jersey-container-servlet</artifactId>
 			<version>2.22.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.vividsolutions</groupId>
-			<artifactId>jts-core</artifactId>
-			<version>1.14.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vividsolutions</groupId>
-			<artifactId>jts</artifactId>
-			<version>1.13</version>
-		</dependency>
-		<dependency>
-			<groupId>com.vividsolutions</groupId>
-			<artifactId>jts-io</artifactId>
-			<version>1.14.0</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.vividsolutions</groupId> -->
+<!-- 			<artifactId>jts-core</artifactId> -->
+<!-- 			<version>1.14.0</version> -->
+<!-- 		</dependency> -->
+<!-- 		 <dependency> -->
+<!-- 			<groupId>com.vividsolutions</groupId> -->
+<!-- 			<artifactId>jts-io</artifactId> -->
+<!-- 			<version>1.14.0</version> -->
+<!--  		</dependency>  -->
+<!-- 		 <dependency> -->
+<!-- 			<groupId>com.vividsolutions</groupId> -->
+<!-- 			<artifactId>jts</artifactId> -->
+<!-- 			<version>1.13</version> -->
+<!--  		</dependency>  -->
+ 		
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
@@ -144,6 +189,7 @@
 			<groupId>com.bedatadriven</groupId>
 			<artifactId>jackson-datatype-jts</artifactId>
 			<version>2.3</version>
+			
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
@@ -191,7 +237,6 @@
 			<artifactId>jaxb-core</artifactId>
 			<version>2.2.11</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.glassfish.jersey.ext</groupId>
 			<artifactId>jersey-metainf-services</artifactId>

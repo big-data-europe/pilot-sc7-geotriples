@@ -37,7 +37,7 @@ public class StrabonRdfStorage implements RdfStorage{
 			// NTRIPLES"};
 			// StoreOp.main(argrs);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw e;
 		} finally {
 			if (strabon != null) {
@@ -58,12 +58,7 @@ public class StrabonRdfStorage implements RdfStorage{
 		try {
 			Format resFormat=Format.XML;
 			OutputStream stream=new ByteArrayOutputStream();
-			try {
-				strabon = new Strabon(db, username, password, port, host, true);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			strabon = new Strabon(db, username, password, port, host, true);
 			strabon.query(query, resFormat,stream);
 			System.out.println(stream.toString());
 			return stream.toString();
@@ -72,6 +67,7 @@ public class StrabonRdfStorage implements RdfStorage{
 			// NTRIPLES"};
 			// StoreOp.main(argrs);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw e;
 		} finally {
 			if (strabon != null) {
