@@ -111,9 +111,12 @@ public class GeotriplesConverter {
 		  String outputDirectory="/home/efi/SNAP/files/";
 			//private String output = "/resources/";
 			  String output="/home/efi/SNAP/files/";
-			String mappingFileName = "event-mapping.ttl";
-			String jsonFileName = "events.json";
-			String rdfFileName = "events.nt";
+//			String mappingFileName = "event-mapping.ttl";
+//			String jsonFileName = "events.json";
+//			String rdfFileName = "events.nt";
+			  String mappingFileName = "change-mapping.ttl";
+				String jsonFileName = "changes.json";
+				String rdfFileName = "changes.nt";
 
 		new GeotriplesConverter().convertToRDF(outputDirectory + mappingFileName, outputDirectory + rdfFileName, outputDirectory + jsonFileName);
 	}

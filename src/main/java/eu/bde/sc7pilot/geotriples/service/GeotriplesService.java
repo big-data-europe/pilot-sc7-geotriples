@@ -91,17 +91,15 @@ public class GeotriplesService {
 				if (changes == null) {
 					respMessage.setMessage("request body should not be empty.");
 					respMessage.setCode(400);
-					throw new WebApplicationException(
-							Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 				}
 				StorageWorkflow storageWorkflow = new StorageWorkflow();
 				try {
 					storageWorkflow.storeChanges(changes);
-					respMessage.setMessage("event processed successfully");
+					respMessage.setMessage("change processed successfully");
 					respMessage.setCode(200);
 				} catch (Exception e) {
 					e.printStackTrace();
-					respMessage.setMessage("internal server error");
+					respMessage.setMessage(e.getMessage());
 					respMessage.setCode(500);
 				}
 				asyncResponse.resume(Response.status(respMessage.getCode()).entity(respMessage).build());

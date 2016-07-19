@@ -47,8 +47,6 @@ rr:predicateObjectMap [
     ];
        #rr:template "http://big-data-europe.eu/security/man-made-changes/Area/id/{areas.id}"]].
 ].
-      # rr:template "http://big-data-europe.eu/security/man-made-changes/Area/id/{id}"]].
-
 <#Area>
     rml:logicalSource [
      rml:source "/resources/changes.json";
@@ -82,7 +80,7 @@ rr:predicateObjectMap [
     rml:logicalSource [
      rml:source "/resources/changes.json";
      rml:referenceFormulation ql:JSONPath;
-     rml:iterator "$.area"];
+     rml:iterator "$.areas"];
 
     rr:subjectMap [ 
      rr:class ogc:Geometry;

@@ -11,10 +11,10 @@ public class Change {
 	@JsonView(Views.Private.class)
 	private Long id;
 	@JsonView(Views.Public.class)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZZ")
 	private DateTime sourceDate;
 	@JsonView(Views.Public.class)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZZ")
 	private DateTime targetDate;
 	@JsonView(Views.Public.class)
 	private Area area;

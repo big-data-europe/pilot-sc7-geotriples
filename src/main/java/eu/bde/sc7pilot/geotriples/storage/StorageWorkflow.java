@@ -21,6 +21,7 @@ public class StorageWorkflow {
 	// private String STRABON_HOST = "localhost";
 	private int STRABON_PORT = 5432;
 	private String DB_NAME = "endpoint";
+	//private String DB_NAME = "events-changes";
 	private String PASSWORD = "postgres";
 	private String USERNAME = "postgres";
 
@@ -48,10 +49,6 @@ public class StorageWorkflow {
 
 		try {
 			objectMapper.writer().writeValue(new File(outputDirectory, jsonFileName), event);
-		} catch (Exception e) {
-			throw e;
-		}
-		try {
 			store(mappingFileName, rdfFileName, jsonFileName);
 		} catch (Exception e) {
 			throw e;
