@@ -51,45 +51,45 @@ rr:predicateObjectMap [
     rml:logicalSource [
      rml:source "/resources/changes.json";
      rml:referenceFormulation ql:JSONPath;
-     rml:iterator "$.area"];
+     rml:iterator "$"];
 
     rr:subjectMap [ 
      rr:class onto:Area; 
      rr:class ogc:Feature;
-     rr:template "http://big-data-europe.eu/security/man-made-changes/Area/id/{id}"];
+     rr:template "http://big-data-europe.eu/security/man-made-changes/Area/id/{$.area.id}"];
 
 rr:predicateObjectMap [
 	rr:predicateMap [ rr:constant onto:hasId ];
 	rr:objectMap [
 		rr:datatype  xsd:long;
-		rml:reference "id";
+		rml:reference "$.area.id";
 	];
 ];
 rr:predicateObjectMap [
 	rr:predicateMap [ rr:constant onto:hasName ];
 	rr:objectMap [
 		rr:datatype  xsd:string;
-		rml:reference "name";
+		rml:reference "$.area.name";
 	];
 ];
 rr:predicateObjectMap [ 
      rr:predicate ogc:hasGeometry;
      rr:objectMap [ 
-       rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{id}"]].
+       rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{$.area.id}"]].
 <#Geometry>
     rml:logicalSource [
      rml:source "/resources/changes.json";
      rml:referenceFormulation ql:JSONPath;
-     rml:iterator "$.areas"];
+     rml:iterator "$"];
 
     rr:subjectMap [ 
      rr:class ogc:Geometry;
-     rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{id}"];
+     rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{$.area.id}"];
 
   rr:predicateObjectMap [ 
      rr:predicate ogc:asWKT;
      rr:objectMap [
        rr:datatype  ogc:wktLiteral;
        rrx:function rrxf:asWKT;
-       rrx:argumentMap ([rml:reference "geometry"]) ];].
+       rrx:argumentMap ([rml:reference "$.area.geometry"]) ];].
 	
