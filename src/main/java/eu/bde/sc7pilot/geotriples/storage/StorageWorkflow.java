@@ -17,7 +17,7 @@ public class StorageWorkflow {
 	 //private String outputDirectory="/home/efi/SNAP/files/";
 	private String output = "/resources/";
 	 //private String output="/home/efi/SNAP/files/";
-	private String STRABON_HOST = "localhost";
+	private String STRABON_HOST = "postgis";
 	// private String STRABON_HOST = "localhost";
 	private int STRABON_PORT = 5432;
 	private String DB_NAME = "endpoint";
