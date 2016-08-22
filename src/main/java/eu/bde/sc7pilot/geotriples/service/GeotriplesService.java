@@ -1,13 +1,11 @@
 package eu.bde.sc7pilot.geotriples.service;
 
-import java.net.HttpURLConnection;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;

@@ -25,6 +25,7 @@ public class StrabonRdfStorage implements RdfStorage{
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				if (strabon != null && !closed) {
+					closed = true;
 					strabon.close();
 				}
 			}
@@ -32,6 +33,7 @@ public class StrabonRdfStorage implements RdfStorage{
 		try {
 			strabon = new Strabon(db, username, password, port, host, true);
 			strabon.storeInRepo(rdfPath, "NTRIPLES", false);
+			closed = false;
 			// String[]
 			// argrs={"localhost","5432","endpoint","postgres","postgres",rdfPath,"-f","
 			// NTRIPLES"};
@@ -51,17 +53,20 @@ public class StrabonRdfStorage implements RdfStorage{
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
 				if (strabon != null && !closed) {
+					closed = true;
 					strabon.close();
 				}
 			}
 		});
+		String result=null;
 		try {
 			Format resFormat=Format.XML;
 			OutputStream stream=new ByteArrayOutputStream();
 			strabon = new Strabon(db, username, password, port, host, true);
 			strabon.query(query, resFormat,stream);
 			System.out.println(stream.toString());
-			return stream.toString();
+			closed = false;
+			result=stream.toString();
 			// String[]
 			// argrs={"localhost","5432","endpoint","postgres","postgres",rdfPath,"-f","
 			// NTRIPLES"};
@@ -75,6 +80,6 @@ public class StrabonRdfStorage implements RdfStorage{
 				strabon.close();
 			}
 		}
-		
+		return result;
 	}
 }
