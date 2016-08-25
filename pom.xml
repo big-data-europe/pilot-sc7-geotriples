@@ -63,38 +63,44 @@
 		</repository>
 	</repositories>
 	<dependencies>
-		<dependency>
+	<dependency>
 			<groupId>eu.earthobservatory</groupId>
-			<artifactId>strabon-runtime</artifactId>
+			<artifactId>strabon-endpoint-client</artifactId>
 			<version>3.3.1</version>
 			<scope>compile</scope>
-			<exclusions>
-			<exclusion>
-				<artifactId>jts</artifactId>
-				<groupId>com.vividsolutions</groupId>
-			</exclusion>
-			<exclusion>
-				<artifactId>gt-geojson</artifactId>
-				<groupId>org.geotools</groupId>
-			</exclusion>
-			<exclusion>
-				<artifactId>gt-xsd-kml</artifactId>
-				<groupId>org.geotools.xsd</groupId>
-			</exclusion>
-			<exclusion>
-				<artifactId>gt-xml</artifactId>
-				<groupId>org.geotools</groupId>
-			</exclusion>
-			<exclusion>
-				<artifactId>gt-jts-wrapper</artifactId>
-				<groupId>org.geotools</groupId>
-			</exclusion>
-			<exclusion>
-				<artifactId>ogc-tools-gml-jts</artifactId>
-				<groupId>org.jvnet.ogc</groupId>
-			</exclusion>
-			</exclusions>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>eu.earthobservatory</groupId> -->
+<!-- 			<artifactId>strabon-runtime</artifactId> -->
+<!-- 			<version>3.3.1</version> -->
+<!-- 			<scope>compile</scope> -->
+<!-- 			<exclusions> -->
+<!-- 			<exclusion> -->
+<!-- 				<artifactId>jts</artifactId> -->
+<!-- 				<groupId>com.vividsolutions</groupId> -->
+<!-- 			</exclusion> -->
+<!-- 			<exclusion> -->
+<!-- 				<artifactId>gt-geojson</artifactId> -->
+<!-- 				<groupId>org.geotools</groupId> -->
+<!-- 			</exclusion> -->
+<!-- 			<exclusion> -->
+<!-- 				<artifactId>gt-xsd-kml</artifactId> -->
+<!-- 				<groupId>org.geotools.xsd</groupId> -->
+<!-- 			</exclusion> -->
+<!-- 			<exclusion> -->
+<!-- 				<artifactId>gt-xml</artifactId> -->
+<!-- 				<groupId>org.geotools</groupId> -->
+<!-- 			</exclusion> -->
+<!-- 			<exclusion> -->
+<!-- 				<artifactId>gt-jts-wrapper</artifactId> -->
+<!-- 				<groupId>org.geotools</groupId> -->
+<!-- 			</exclusion> -->
+<!-- 			<exclusion> -->
+<!-- 				<artifactId>ogc-tools-gml-jts</artifactId> -->
+<!-- 				<groupId>org.jvnet.ogc</groupId> -->
+<!-- 			</exclusion> -->
+<!-- 			</exclusions> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>

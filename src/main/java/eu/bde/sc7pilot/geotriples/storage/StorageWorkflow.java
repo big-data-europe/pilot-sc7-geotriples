@@ -1,7 +1,6 @@
 package eu.bde.sc7pilot.geotriples.storage;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import com.bedatadriven.jackson.datatype.jts.JtsModule;
@@ -17,8 +16,8 @@ public class StorageWorkflow {
 	 //private String outputDirectory="/home/efi/SNAP/files/";
 	private String output = "/resources/";
 	 //private String output="/home/efi/SNAP/files/";
-	private String STRABON_HOST = "postgis";
-	// private String STRABON_HOST = "localhost";
+	//private String STRABON_HOST = "postgis";
+	 private String STRABON_HOST = "localhost";
 	private int STRABON_PORT = 5432;
 	private String DB_NAME = "endpoint";
 	//private String DB_NAME = "events-changes";
@@ -60,8 +59,12 @@ public class StorageWorkflow {
 			new GeotriplesConverter().convertToRDF(outputDirectory + mappingFileName, outputDirectory + rdfFileName, outputDirectory + jsonFileName);
 //		GeotriplesConverter.tempGeotriples(outputDirectory + mappingFileName, outputDirectory + rdfFileName,
 //				outputDirectory + jsonFileName);
-		RdfStorage rdfStorage = new StrabonRdfStorage(DB_NAME, USERNAME, PASSWORD, STRABON_PORT, STRABON_HOST);
-		rdfStorage.storeRdf(output + rdfFileName);
+		//RdfStorage rdfStorage = new StrabonRdfStorage(DB_NAME, USERNAME, PASSWORD, STRABON_PORT, STRABON_HOST);
+		GeotriplesConverter conv=new GeotriplesConverter();
+		conv.convertToRDF(outputDirectory + mappingFileName, outputDirectory + rdfFileName, outputDirectory + jsonFileName);
+		
+		RdfStorage rdfStorage=new StrabonEndpoint("localhost", "endpoint", "3ndpo1nt",8080 , "strabon-endpoint/Store");
+		rdfStorage.storeRdf("file://"+outputDirectory+rdfFileName);
 		} catch (Exception e) {
 			e.printStackTrace();;
 			throw e;
