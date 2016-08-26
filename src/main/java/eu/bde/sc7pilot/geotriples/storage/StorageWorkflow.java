@@ -63,7 +63,7 @@ public class StorageWorkflow {
 		GeotriplesConverter conv=new GeotriplesConverter();
 		conv.convertToRDF(outputDirectory + mappingFileName, outputDirectory + rdfFileName, outputDirectory + jsonFileName);
 		
-		RdfStorage rdfStorage=new StrabonEndpoint("localhost", "endpoint", "3ndpo1nt",8080 , "strabon-endpoint/Store");
+		RdfStorage rdfStorage=new StrabonEndpoint("localhost", "endpoint", "3ndpo1nt",8080 , "strabon/Store");
 		rdfStorage.storeRdf("file://"+outputDirectory+rdfFileName);
 		} catch (Exception e) {
 			e.printStackTrace();;
