@@ -80,6 +80,11 @@ rr:predicateObjectMap [
 	];
 ];
 
+rr:predicateObjectMap [ 
+     rr:predicate ogc:hasGeometry;
+     rr:objectMap [ 
+       rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{id}"]].
+       
 <#Poolparty>
     rml:logicalSource [
      rml:source "/resources/events.json";
@@ -102,12 +107,8 @@ rr:predicateObjectMap [
 	rr:objectMap [
 		rml:reference "concept_uri";
 	];
-];
+].
 
-rr:predicateObjectMap [ 
-     rr:predicate ogc:hasGeometry;
-     rr:objectMap [ 
-       rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{id}"]].
 <#Geometry>
     rml:logicalSource [
      rml:source "/resources/events.json";
