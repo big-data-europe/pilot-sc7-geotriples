@@ -46,6 +46,13 @@ rr:predicateObjectMap [
       rr:parentTriplesMap <#Area>;
     ];
        #rr:template "http://big-data-europe.eu/security/man-made-changes/Area/id/{areas.id}"]].
+       
+rr:predicateObjectMap [ 
+     rr:predicate onto:hasPoolparty;
+     rr:objectMap [
+      rr:parentTriplesMap <#Poolparty>;
+    ];
+
 ].
 <#Area>
     rml:logicalSource [
@@ -72,6 +79,31 @@ rr:predicateObjectMap [
 		rml:reference "name";
 	];
 ];
+
+<#Poolparty>
+    rml:logicalSource [
+     rml:source "/resources/events.json";
+     rml:referenceFormulation ql:JSONPath;
+     rml:iterator "$.poolparties"];
+
+    rr:subjectMap [ 
+     rr:class onto:PoolPartyPair;
+     rr:template "http://big-data-europe.eu/security/man-made-changes/PoolParty/Thesaurus/{GeoTriplesID}"];
+
+rr:predicateObjectMap [
+	rr:predicateMap [ rr:constant onto:hasThesaurusId ];
+	rr:objectMap [
+		rr:datatype  xsd:string;
+		rml:reference "thesaurus_uuid";
+	];
+];
+rr:predicateObjectMap [
+	rr:predicateMap [ rr:constant onto:hasConceptURI ];
+	rr:objectMap [
+		rml:reference "concept_uri";
+	];
+];
+
 rr:predicateObjectMap [ 
      rr:predicate ogc:hasGeometry;
      rr:objectMap [ 

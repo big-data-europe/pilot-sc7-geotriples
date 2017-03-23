@@ -13,16 +13,16 @@ import eu.bde.sc7pilot.geotriples.utils.Views;
 public class Event {
 	@JsonView(Views.Public.class)
 	private String id;
-	
+
 	@JsonView(Views.Public.class)
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String title;
-	
+
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonView(Views.Public.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZZ")
 	private DateTime eventDate;
-	
+
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonView(Views.Private.class)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZZ")
@@ -30,22 +30,25 @@ public class Event {
 	@JsonView(Views.Public.class)
 	private List<Area> areas;
 
+	@JsonView(Views.Public.class)
+	private List<Poolparty> poolparties;
+
 	public Event() {
-		this (null, null, null, null, null);
+		this(null, null, null, null, null);
 	}
 
-	public Event(String id, String title, DateTime eventDate,
-			List<Area> areas) {
-		this(id, title, eventDate, null, areas);
+	public Event(String id, String title, DateTime eventDate, List<Area> areas, List<Poolparty> poolparties) {
+		this(id, title, eventDate, null, areas, poolparties);
 	}
 
-	public Event(String id, String title, DateTime eventDate,
-			DateTime referenceDate, List<Area> areas) {
+	public Event(String id, String title, DateTime eventDate, DateTime referenceDate, List<Area> areas,
+			List<Poolparty> poolparties) {
 		this.id = id;
 		this.title = title;
 		this.eventDate = eventDate;
 		this.referenceDate = referenceDate;
 		this.areas = areas;
+		this.poolparties = poolparties;
 	}
 
 	public String getId() {
@@ -87,21 +90,33 @@ public class Event {
 	public void setReferenceDate(DateTime referenceDate) {
 		this.referenceDate = referenceDate;
 	}
-	 public boolean equals(Object other) {
-	        if (this == other) return true;
-	        if ( !(other instanceof Event) ) return false;
 
-	        final Event event = (Event) other;
+	public boolean equals(Object other) {
+		if (this == other)
+			return true;
+		if (!(other instanceof Event))
+			return false;
 
-	        if ( !event.getId().equals( getId() ) ) return false;
+		final Event event = (Event) other;
 
-	        return true;
-	    }
+		if (!event.getId().equals(getId()))
+			return false;
+
+		return true;
+	}
 
 	public int hashCode() {
-        int result;
-        result = getId().hashCode();
-        return result;
-    }
+		int result;
+		result = getId().hashCode();
+		return result;
+	}
+
+	public List<Poolparty> getPoolparties() {
+		return poolparties;
+	}
+
+	public void setPoolparties(List<Poolparty> poolparties) {
+		this.poolparties = poolparties;
+	}
 
 }
