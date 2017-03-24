@@ -1,6 +1,7 @@
 package eu.bde.sc7pilot.geotriples.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -62,6 +63,8 @@ public class GeotriplesService {
 					if (p == null) {
 						respMessage.setMessage("invalid poolparty entry");
 						respMessage.setCode(400);
+					}else{
+						p.setPairid(UUID.randomUUID().toString());
 					}
 				}
 				StorageWorkflow storageWorkflow = new StorageWorkflow();

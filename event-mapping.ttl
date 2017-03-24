@@ -45,7 +45,7 @@ rr:predicateObjectMap [
      rr:objectMap [
       rr:parentTriplesMap <#Area>;
     ];
-       #rr:template "http://big-data-europe.eu/security/man-made-changes/Area/id/{areas.id}"]].
+];
        
 rr:predicateObjectMap [ 
      rr:predicate onto:hasPoolparty;
@@ -93,7 +93,7 @@ rr:predicateObjectMap [
 
     rr:subjectMap [ 
      rr:class onto:PoolPartyPair;
-     rr:template "http://big-data-europe.eu/security/man-made-changes/PoolParty/Thesaurus/{GeoTriplesID}"];
+     rr:template "http://big-data-europe.eu/security/man-made-changes/PoolParty/Thesaurus/{pairid}"];
 
 rr:predicateObjectMap [
 	rr:predicateMap [ rr:constant onto:hasThesaurusId ];

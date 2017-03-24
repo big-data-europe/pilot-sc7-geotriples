@@ -21,6 +21,17 @@ public class Poolparty {
 		this.concept_uri = concept_uri;
 	}
 
+	public String getPairid() {
+		return pairid;
+	}
+
+	public void setPairid(String pairid) {
+		this.pairid = pairid;
+	}
+
+	@JsonView(Views.Public.class)
+	String pairid;
+
 	@JsonView(Views.Public.class)
 	String thesaurus_uuid;
 	@JsonView(Views.Public.class)
