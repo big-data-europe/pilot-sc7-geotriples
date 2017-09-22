@@ -11,6 +11,8 @@ import eu.bde.sc7pilot.geotriples.GeotriplesConverter;
 import eu.bde.sc7pilot.geotriples.model.Change;
 import eu.bde.sc7pilot.geotriples.model.Event;
 
+import java.util.logging.*;
+
 public class StorageWorkflow {
 	private String outputDirectory = "/resources/";
 	 //private String outputDirectory="/home/efi/SNAP/files/";
@@ -48,6 +50,7 @@ public class StorageWorkflow {
 
 		try {
 			objectMapper.writer().writeValue(new File(outputDirectory, jsonFileName), event);
+			Logger.getAnonymousLogger().info("Calling store on jsonfile:" + jsonFileName + " , rdf file: " + rdfFileName + " , mapping file: " + mappingFileName + " with output dir:" + outputDirectory );
 			store(mappingFileName, rdfFileName, jsonFileName);
 		} catch (Exception e) {
 			throw e;

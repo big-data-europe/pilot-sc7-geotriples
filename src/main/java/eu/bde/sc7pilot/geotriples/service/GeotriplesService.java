@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 import eu.bde.sc7pilot.geotriples.model.Area;
 import eu.bde.sc7pilot.geotriples.model.Change;
 import eu.bde.sc7pilot.geotriples.model.Event;
-import eu.bde.sc7pilot.geotriples.model.Poolparty;
+import eu.bde.sc7pilot.geotriples.model.Entity;
 import eu.bde.sc7pilot.geotriples.storage.StorageWorkflow;
 import eu.bde.sc7pilot.geotriples.utils.IdRetrieval;
 import eu.bde.sc7pilot.geotriples.webconfig.ResponseMessage;
@@ -59,7 +59,7 @@ public class GeotriplesService {
 							//	Response.status(HttpURLConnection.HTTP_BAD_REQUEST).entity(respMessage).build());
 					}
 				}
-				for (Poolparty p: event.getPoolparties()) {
+				for (Entity p: event.getEntities()) {
 					if (p == null) {
 						respMessage.setMessage("invalid poolparty entry");
 						respMessage.setCode(400);

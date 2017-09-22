@@ -40,17 +40,31 @@ rr:predicateObjectMap [
 		rml:reference "eventDate";
 	];
 ];
+rr:predicateObjectMap [
+	rr:predicateMap [ rr:constant onto:hasPrefLabel ];
+	rr:objectMap [
+		rr:datatype  xsd:string;
+		rml:reference "prefLabel";
+	];
+];
 rr:predicateObjectMap [ 
      rr:predicate onto:hasArea;
      rr:objectMap [
       rr:parentTriplesMap <#Area>;
     ];
 ];
+
+rr:predicateObjectMap [ 
+     rr:predicate onto:hasImages;
+     rr:objectMap [
+      rr:parentTriplesMap <#Image>;
+    ];
+];
        
 rr:predicateObjectMap [ 
-     rr:predicate onto:hasPoolparty;
+     rr:predicate onto:hasEntity;
      rr:objectMap [
-      rr:parentTriplesMap <#Poolparty>;
+      rr:parentTriplesMap <#Entity>;
     ];
 
 ].
@@ -85,15 +99,15 @@ rr:predicateObjectMap [
      rr:objectMap [ 
        rr:template "http://big-data-europe.eu/security/man-made-changes/Geometry/id/{id}"]].
        
-<#Poolparty>
+<#Entity>
     rml:logicalSource [
      rml:source "/resources/events.json";
      rml:referenceFormulation ql:JSONPath;
-     rml:iterator "$.poolparties"];
+     rml:iterator "$.entities"];
 
     rr:subjectMap [ 
-     rr:class onto:PoolPartyPair;
-     rr:template "http://big-data-europe.eu/security/man-made-changes/PoolParty/Thesaurus/{pairid}"];
+     rr:class onto:EntityPair;
+     rr:template "http://big-data-europe.eu/security/man-made-changes/Entity/Thesaurus/{pairid}"];
 
 rr:predicateObjectMap [
 	rr:predicateMap [ rr:constant onto:hasThesaurusId ];
@@ -108,6 +122,35 @@ rr:predicateObjectMap [
 		rml:reference "concept_uri";
 	];
 ].
+
+
+<#Image>
+    rml:logicalSource [
+     rml:source "/resources/events.json";
+     rml:referenceFormulation ql:JSONPath;
+     rml:iterator "$.images"];
+
+    rr:subjectMap [ 
+     rr:class onto:ImagePair;
+     rr:template "http://big-data-europe.eu/security/man-made-changes/Image/Thesaurus/{pairid}"];
+
+rr:predicateObjectMap [
+	rr:predicateMap [ rr:constant onto:hasPlace ];
+	rr:objectMap [
+		rr:datatype  xsd:string;
+		rml:reference "place";
+	];
+];
+
+rr:predicateObjectMap [
+	rr:predicateMap [ rr:constant onto:hasLink ];
+	rr:objectMap [
+		rr:datatype xsd:string;
+		rml:reference "link";
+	];
+].
+
+
 
 <#Geometry>
     rml:logicalSource [

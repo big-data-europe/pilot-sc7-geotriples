@@ -17,7 +17,7 @@ public class JsonMappingExceptionMapper implements ExceptionMapper<JsonMappingEx
 	public Response toResponse(JsonMappingException exception) {
 		ResponseMessage respMessage = new ResponseMessage();
 		String message = "This is an invalid request. ";
-		System.out.println("map");
+		System.out.println("map : exp msg: " + exception.getMessage());
 		List<Reference> refs = exception.getPath();
 		if (refs.size() > 0) {
 			message +="Path to error: ";

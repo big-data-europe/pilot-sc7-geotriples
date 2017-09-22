@@ -31,25 +31,34 @@ public class Event {
 	private List<Area> areas;
 
 	@JsonView(Views.Public.class)
-	private List<Poolparty> poolparties;
+	private List<Entity> entities;
+
+	@JsonView(Views.Public.class)
+	private List<Image> images;
 
 	public Event() {
-		this(null, null, null, null, null);
+	    this(null, null, null, null, null,null,null);
 	}
 
-	public Event(String id, String title, DateTime eventDate, List<Area> areas, List<Poolparty> poolparties) {
-		this(id, title, eventDate, null, areas, poolparties);
+	public Event(String id, String title, DateTime eventDate, List<Area> areas, List<Entity> entities) {
+	    this(id, title, eventDate, null, areas, entities, null);
 	}
 
-	public Event(String id, String title, DateTime eventDate, DateTime referenceDate, List<Area> areas,
-			List<Poolparty> poolparties) {
+        public Event(String id, String title, DateTime eventDate, List<Area> areas, List<Entity> entities,List<Image> images) {
+	    this(id, title, eventDate, null, areas, entities, images);
+	}
+
+	public Event(String id, String title, DateTime eventDate, DateTime referenceDate, List<Area> areas,List<Entity> entities, List<Image> images) {
 		this.id = id;
 		this.title = title;
 		this.eventDate = eventDate;
 		this.referenceDate = referenceDate;
 		this.areas = areas;
-		this.poolparties = poolparties;
+		this.entities = entities;
+		this.images = images;
 	}
+
+    
 
 	public String getId() {
 		return id;
@@ -111,12 +120,20 @@ public class Event {
 		return result;
 	}
 
-	public List<Poolparty> getPoolparties() {
-		return poolparties;
+	public List<Entity> getEntities() {
+		return entities;
 	}
 
-	public void setPoolparties(List<Poolparty> poolparties) {
-		this.poolparties = poolparties;
+	public void setEntities(List<Entity> entities) {
+		this.entities = entities;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 }
