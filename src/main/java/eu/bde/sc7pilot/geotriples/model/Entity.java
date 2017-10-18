@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import eu.bde.sc7pilot.geotriples.utils.Views;
 
 public class Entity {
+	
 	public String getThesaurus_uuid() {
 		return thesaurus_uuid;
 	}
@@ -28,13 +29,15 @@ public class Entity {
 	public void setPairid(String pairid) {
 		this.pairid = pairid;
 	}
-        public String getPrefLabel() {
+	
+    public String getPrefLabel() {
 		return prefLabel;
 	}
 
 	public void setPrefLabel(String prefLabel) {
 		this.prefLabel = prefLabel;
 	}
+	
 	@JsonView(Views.Public.class)
 	String pairid;
 	@JsonView(Views.Public.class)

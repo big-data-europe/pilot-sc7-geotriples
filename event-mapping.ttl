@@ -116,10 +116,18 @@ rr:predicateObjectMap [
 		rml:reference "thesaurus_uuid";
 	];
 ];
+
 rr:predicateObjectMap [
 	rr:predicateMap [ rr:constant onto:hasConceptURI ];
 	rr:objectMap [
 		rml:reference "concept_uri";
+	];
+];
+
+rr:predicateObjectMap [
+	rr:predicateMap [ rr:constant onto:hasPrefLabel ];
+	rr:objectMap [
+		rml:reference "prefLabel";
 	];
 ].
 
